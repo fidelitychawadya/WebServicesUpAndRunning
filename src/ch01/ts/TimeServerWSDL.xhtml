@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://ts.ch01/"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        targetNamespace="http://ts.ch01/"
+        name="TimeServerImplService">
+    <types></types>
+    <message name="getTimeAsString"></message>
+    <message name="getTimeAsStringResponse">
+        <part name="return" type="xsd:string">
+        </part>
+    </message>
+    <message name="getTimeAsElapsed"></message>
+    <message name="getTimeAsElapsedResponse">
+        <part name="return" type="xsd:long"></part>
+    </message>
+    <portType name="TimeServer">
+        <operation name="getTimeAsString"
+                   parameterOrder="">
+            <input message="tns:getTimeAsString">
+            </input>
+            <output
+                    message="tns:getTimeAsStringResponse"></output>
+        </operation>
+        <operation name="getTimeAsElapsed"
+                   parameterOrder="">
+            <input message="tns:getTimeAsElapsed">
+            </input>
+            <output
+                    message="tns:getTimeAsElapsedResponse"></output>
+        </operation>
+    </portType>
+    <binding name="TimeServerImplPortBinding"
+             type="tns:TimeServer">
+        <soap:binding style="rpc"
+                      transport="http://schemas.xmlsoap.org/soap/http">
+        </soap:binding>
+        <operation name="getTimeAsString">
+            <soap:operation soapAction="">
+            </soap:operation>
+            <input>
+                <soap:body use="literal"
+                           namespace="http://ts.ch01/"></soap:body>
+            </input>
+            <output>
+                <soap:body use="literal"
+                           namespace="http://ts.ch01/"></soap:body>
+            </output>
+        </operation>
+        <operation name="getTimeAsElapsed">
+            <soap:operation soapAction="">
+            </soap:operation>
+            <input>
+                <soap:body use="literal"
+                           namespace="http://ts.ch01/"></soap:body>
+            </input>
+            <output>
+                <soap:body use="literal"
+                           namespace="http://ts.ch01/"></soap:body>
+            </output>
+        </operation>
+    </binding>
+    <service name="TimeServerImplService">
+        <port name="TimeServerImplPort"
+              binding="tns:TimeServerImplPortBinding">
+            <soap:address
+                    location="http://localhost:9876/ts">
+            </soap:address>
+        </port>
+    </service>
+</definitions>

@@ -1,0 +1,44 @@
+POST http://127.0.0.1:9876/ts HTTP/ 1.1
+        Accept: text/xml
+        Accept: multipart/*
+        Accept: application/soap
+        User-Agent: SOAP::Lite/Perl/0.69
+        Content-Length: 434
+        Content-Type: text/xml; charset=utf-8
+        SOAPAction: ""
+        <?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+        soap:encodingStyle="http://
+schemas.xmlsoap.org/soap/encoding/"
+        xmlns:soap="http://schemas.xmlsoap.org/soap/
+envelope/"
+        xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance"
+        xmlns:tns="http://ts.ch01/"
+        xmlns:xsd
+                ="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <tns:getTimeAsString xsi:nil="true"/>
+    </soap:Body>
+</soap:Envelope>
+
+        HTTP/1.1 200 OK
+        Content-Length: 323
+        Content-Type: text/xml; charset=utf-8
+        Client-Date: Mon, 28 Apr 2008 02:12:54 GMT
+        Client-Peer: 127.0.0.1:9876
+        Client-Response-Num: 1
+        <?xml version="1.0" ?>
+
+<soapenv:Envelope
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<soapenv:Body>
+    <ans:getTimeAsStringResponse
+            xmlns:ans="http://ts.ch01/">
+        <return>Mon Apr 28 14:12:54 CST
+            2008
+        </return>
+    </ans:getTimeAsStringResponse>
+</soapenv:Body>
+</soapenv:Envelope>
